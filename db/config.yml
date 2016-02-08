@@ -1,0 +1,5 @@
+development:
+    adapter: postgresql
+    username: postgres
+    password: postgres
+    database: twitter_bot

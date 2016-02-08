@@ -36,4 +36,4 @@ node_modules
 .env
 
 # Vim swapfiles
-.sw*
+.*.sw*
