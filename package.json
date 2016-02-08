@@ -10,6 +10,10 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^2.0.0",
-    "node-tweet-stream": "^1.10.0"
+    "knex": "^0.10.0-rc1",
+    "node-tweet-stream": "^1.10.0",
+    "node-twitter": "^0.5.3",
+    "twitter": "^1.2.5",
+    "winston": "^2.1.1"
   }
 }
