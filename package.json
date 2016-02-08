@@ -1,0 +1,11 @@
+{
+  "name": "twitter_competition_bot",
+  "version": "1.0.0",
+  "description": "a bot to re-tweet competition tweets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jyting",
+  "license": "MIT"
+}
