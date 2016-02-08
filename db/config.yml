@@ -1,3 +1,5 @@
 development:
-    adapter: pg
+    adapter: postgresql
+    username: postgres
+    password: postgres
     database: twitter_bot
