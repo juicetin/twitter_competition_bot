@@ -67,6 +67,15 @@ function strip_copied_tweets(tweet_text) {
 
 // TODO
 function retweet(tweet) {
+	// TODO write retweeted tweet to db!
+}
+
+// TODO
+function follow_user(tweet) {
+}
+
+// TODO
+function favorite_tweet(tweeet) {
 }
 
 function streamSingleTweet(tweet) {
