@@ -10,9 +10,11 @@ requirejs.config({
 });
 
 requirejs(['app/index.js'], function (service) {
-	service.start()
-	.then(function () {
-		console.log('Twitter competition bot started!');
-	});
+
+	// Start service when everything is linked together properly!
+	// service.start()
+	// .then(function () {
+	// 	console.log('Twitter competition bot started!');
+	// });
 });
 
