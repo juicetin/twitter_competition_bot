@@ -3,3 +3,10 @@ development:
     username: postgres
     password: postgres
     database: twitter_bot
+
+test:
+    adapter: postgresql
+    username: postgres
+    password: postgres
+    database: twitter_bot_test
+

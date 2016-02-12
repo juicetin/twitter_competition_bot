@@ -4,16 +4,25 @@
   "description": "a bot to re-tweet competition tweets",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "NODE_ENV=test mocha tests/**/*.spec.js"
   },
   "author": "jyting",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.2.2",
+    "chai": "^3.5.0",
     "dotenv": "^2.0.0",
     "knex": "^0.10.0-rc1",
+    "mocha": "^2.4.5",
     "node-tweet-stream": "^1.10.0",
     "node-twitter": "^0.5.3",
+    "pg": "^4.4.4",
+    "requirejs": "^2.1.22",
     "twitter": "^1.2.5",
     "winston": "^2.1.1"
+  },
+  "devDependencies": {
+    "should": "^8.2.2"
   }
 }
