@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "NODE_ENV=TEST mocha --recursive tests",
-	"test-u": "NODE_ENV=TEST mocha --recursive tests/unit",
-	"test-i": "NODE_ENV=TEST mocha --recursive tests/integration"
+    "test": "NODE_ENV=TEST node_modules/mocha/bin/mocha --recursive tests",
+	"test-u": "NODE_ENV=TEST node_modules/mocha/bin/mocha --recursive tests/unit",
+	"test-i": "NODE_ENV=TEST node_modules/mocha/bin/mocha --recursive tests/integration"
   },
   "author": "jyting",
   "license": "MIT",
