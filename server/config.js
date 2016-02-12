@@ -1,8 +1,9 @@
 define(function(require, exports, module) {
 
-	var is_test_env = process.env.NODE_ENV === 'TEST';
-
 	var config = exports;
+
+	var is_test_env = config.is_test_env = process.env.NODE_ENV === 'TEST';
+
 
 	// Twitter auth details
 	config.tw_auth = {

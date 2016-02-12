@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "NODE_ENV=test mocha tests/**/*.spec.js"
+    "test": "NODE_ENV=TEST mocha --recursive tests",
+	"test-u": "NODE_ENV=TEST mocha --recursive tests/unit",
+	"test-i": "NODE_ENV=TEST mocha --recursive tests/integration"
   },
   "author": "jyting",
   "license": "MIT",

@@ -1,11 +1,11 @@
 define(function(require, exports, module) {
 
 	var Stream = module.exports;
-	var CONSTANTS = require('src/constants.js');
+	var CONSTANTS = require('app/constants.js');
 	var winston = require('winston');
-	var Search = require('src/js/search.js');
+	var Search = require('app/js/search.js');
 	var twitter_client = require('server/twitter.js');
-	var string_utils = require('src/js/string_utils.js');
+	var string_utils = require('app/js/string_utils.js');
 
 	var retweet = Stream.retweet = function (tweet) {
 		var Twitter = twitter_client.get_client();

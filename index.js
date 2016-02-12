@@ -9,7 +9,7 @@ requirejs.config({
 	paths: {}
 });
 
-requirejs(['src/js/index.js'], function (service) {
+requirejs(['app/index.js'], function (service) {
 	service.start()
 	.then(function () {
 		console.log('Twitter competition bot started!');

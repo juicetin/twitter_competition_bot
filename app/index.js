@@ -4,17 +4,7 @@ define(function (require, exports, module) {
 	var db = require('server/db.js');
 	var twitter_client = require('server/twitter.js');
 
-	// var knex = require('knex')({
-	// 	client: 'pg',
-	// 	connection: {
-	// 		host: process.env.PG_HOST,
-	// 		user: process.env.PG_USER,
-	// 		password: process.env.PG_PASS,
-	// 		database: process.env.PG_DB
-	// 	}
-	// });
-
-	var Stream = require('src/js/stream.js');
+	var Stream = require('app/js/stream.js');
 
 	var Twitter;
 

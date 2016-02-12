@@ -11,7 +11,7 @@ requirejs.config({
 describe ("constants should convert correctly", function() {
 	var constants;
 	before(function (done) {
-		requirejs(['src/constants.js'], function (constants_req) {
+		requirejs(['app/constants.js'], function (constants_req) {
 			constants = constants_req;
 			done();
 		});

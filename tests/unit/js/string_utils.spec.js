@@ -12,7 +12,7 @@ describe("String utilities should do their job!", function() {
 
 	var string_utils;
 	before(function(done) {
-		requirejs(['src/js/string_utils.js'], function (string_utils_req) {
+		requirejs(['app/js/string_utils.js'], function (string_utils_req) {
 			string_utils = string_utils_req;
 			done();
 		});
