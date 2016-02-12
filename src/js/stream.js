@@ -4,9 +4,11 @@ define(function(require, exports, module) {
 	var CONSTANTS = require('src/constants.js');
 	var winston = require('winston');
 	var Search = require('src/js/search.js');
+	var twitter_client = require('server/twitter.js');
+	var string_utils = require('src/js/string_utils.js');
 
 	var retweet = Stream.retweet = function (tweet) {
-		var Twitter = require('server/twitter').get_client();
+		var Twitter = twitter_client.get_client();
 		try {
 			Twitter.post('/statuses/retweet/' + tweet.id);
 			// TODO write retweeted tweet to db!
@@ -28,7 +30,7 @@ define(function(require, exports, module) {
 			user_id = tweet.user.id;
 			screen_id = tweet.user.screen_name;
 			try {
-				var Twitter = require('server/twitter').get_client();
+				var Twitter = twitter_client.get_client();
 				Twitter.post('/friendships/create/' + tweet.user.id);
 				// TODO create friendship (Follow) with user_id
 				// TODO write followed user to db with date created
@@ -43,10 +45,10 @@ define(function(require, exports, module) {
 	 * Favorite a tweet
 	 */
 	var favorite_tweet = Stream.favorite_tweet = function (tweet) {
-		var Twitter = require('server/twitter').get_client();
+		var Twitter = twitter_client.get_client();
 		var tweet_str = new String(tweet.text);
 		tweet_str = tweet_str.toLowerCase();
-		var to_fav = target_words_in_string(fav_keywords, tweet_str);
+		var to_fav = string_utils.target_words_in_string(fav_keywords, tweet_str);
 		if (to_fav) {
 			var tweet_id = tweet.id_str;
 			try {
@@ -75,7 +77,7 @@ define(function(require, exports, module) {
 		console.log(tweet_text);
 
 		// Check if any unwanted words are in the tweet, and skip tweet if so
-		var exist_unwanted_words = target_words_in_string(CONSTANTS.unwanted_keywords, tweet_text);
+		var exist_unwanted_words = string_utils.target_words_in_string(CONSTANTS.unwanted_keywords, tweet_text);
 		if (exist_unwanted_words === true) { return; }
 
 		// future TODO do document matrix comparison from ~300 most recent tweets, don't waste
@@ -85,7 +87,7 @@ define(function(require, exports, module) {
 		if (is_original(tweet) === true) {
 
 			// Strip 'copied' down tweet to a bare minimum (extremely rough here), chance for regex :muscle:
-			var new_tweet_text = strip_copied_tweets(tweet_text);
+			var new_tweet_text = string_utils.strip_copied_tweets(tweet_text);
 
 			// Search tweets based on 'fixed' tweet string, but skip tweet if search fails
 			var searched_tweets = Search.search_tweets_by_str(new_tweet_text);

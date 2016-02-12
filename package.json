@@ -13,7 +13,7 @@
     "bluebird": "^3.2.2",
     "chai": "^3.5.0",
     "dotenv": "^2.0.0",
-    "knex": "^0.10.0-rc1",
+    "knex": "^0.9.0",
     "mocha": "^2.4.5",
     "node-tweet-stream": "^1.10.0",
     "node-twitter": "^0.5.3",
