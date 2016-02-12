@@ -42,8 +42,11 @@ describe("the repository for the 'tweets' table", function() {
 		];
 
 		return tweets_repo.insert_one(tweets[0]).then(function () {
+			return knex('tweets').insert(tweets[1]);
+		}).then(function () {
 			return knex('tweets').where('tweet_id', 124);
 		}).then(function (result) {
+			console.log(result);
 			result.should.have.length(1);
 			result[0].tweet_id.should.equal(124);
 			result[0].user_id.should.equal(715);
@@ -57,6 +60,7 @@ describe("the repository for the 'tweets' table", function() {
 			result[0].user_id.should.equal(704);
 			result[0].tweet_text.should.equal('fizz buzz');
 			result[0].favourited.should.equal(false);
+			done();
 		}).catch(function (error) {
 			done(error);
 		});
