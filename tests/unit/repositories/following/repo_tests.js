@@ -1,6 +1,6 @@
 var requirejs = require('requirejs');
 
-describe("following repo", function() {
+describe("the repository for the 'following' table", function() {
 
 	var following_repo,
 		db,
