@@ -37,3 +37,6 @@ node_modules
 
 # Vim swapfiles
 .*.sw*
+
+# No need to push local logs to server
+twitter_bot.logs

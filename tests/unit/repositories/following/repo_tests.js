@@ -4,16 +4,19 @@ describe("the repository for the 'following' table", function() {
 
 	var following_repo,
 		db,
-		knex;
+		knex,
+		logger;
 
 	before(function(done) {
 		requirejs(['app/repositories/following/index.js',
-				   'server/db.js'], 
-		function (following_repo_req, db_req) {
+				   'server/db.js',
+				   'server/logger.js'], 
+		function (following_repo_req, db_req, logger_req) {
 			following_repo = following_repo_req;
 			db = db_req;
 			db.connect();
 			knex = db.get_knex();
+			logger = logger_req;
 			done();
 		});
 	});
@@ -38,7 +41,7 @@ describe("the repository for the 'following' table", function() {
 			result[0].user_screen_name.should.equal('whatever');
 			done();
 		}).catch(function (error) {
-			console.log('ERROR', error);
+			logger.error(error);
 			done(error);
 		});
 	});

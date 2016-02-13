@@ -2,7 +2,7 @@ define(function(require, exports, module) {
 
 	var Stream = module.exports;
 	var CONSTANTS = require('app/constants.js');
-	var winston = require('winston');
+	var logger = require('server/logger.js');
 	var Search = require('app/js/search.js');
 	var twitter_client = require('server/twitter.js');
 	var string_utils = require('app/js/string_utils.js');
@@ -76,7 +76,7 @@ define(function(require, exports, module) {
 		if (typeof id_str === "undefined") { return; }
 
 		var tweet_text = tweet.text;
-		console.log(tweet_text);
+		logger.info(tweet_text);
 
 		// Check if any unwanted words are in the tweet, and skip tweet if so
 		var exist_unwanted_words = string_utils.target_words_in_string(CONSTANTS.unwanted_keywords, tweet_text);

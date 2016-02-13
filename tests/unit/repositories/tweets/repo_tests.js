@@ -5,16 +5,19 @@ describe("the repository for the 'tweets' table", function() {
 	require('should');
 	var tweets_repo,
 		db,
-		knex;
+		knex,
+		logger;
 
 	before(function(done) {
 		requirejs(['app/repositories/tweets/index.js',
-				   'server/db.js'], 
-		function (tweets_repo_req, db_req) {
+				   'server/db.js',
+				   'server/logger.js'], 
+		function (tweets_repo_req, db_req, logger_req) {
 			tweets_repo = tweets_repo_req;
 			db = db_req;
 			db.connect();
 			knex = db.get_knex();
+			logger = logger_req;
 			done();
 		});
 	});
@@ -46,7 +49,7 @@ describe("the repository for the 'tweets' table", function() {
 		}).then(function () {
 			return knex('tweets').where('tweet_id', 124);
 		}).then(function (result) {
-			console.log(result);
+			logger.info(result);
 			result.should.have.length(1);
 			result[0].tweet_id.should.equal(124);
 			result[0].user_id.should.equal(715);

@@ -3,11 +3,12 @@ define(function (require, exports, module) {
 	var db;
 	var knex = require('knex');
 	var config = require('server/config.js');
+	var logger = require('server/logger.js');
 
 	// Opens a connection to the database (should)
 	// 	only be called once for the session
 	db_module.connect = function() {
-		console.log('connecting with uri:', config.db.uri);
+		logger.info('connecting with uri:', config.db.uri);
 		db = knex({
 			client: 'pg',
 			connection: config.db.uri,

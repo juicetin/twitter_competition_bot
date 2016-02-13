@@ -1,9 +1,10 @@
 "use strict"
+var logger = require('server/logger.js');
 
 try {
 	require('dotenv').config();
 } catch (error) {
-	console.log("No dotenv file located - using heroku configured environment variables");
+	logger.error("No dotenv file located - using heroku configured environment variables");
 }
 
 
@@ -16,11 +17,11 @@ requirejs.config({
 
 requirejs(['app/index.js'], function (service) {
 
-	console.log('Service temporarily turned off until everything is working together!');
+	logger.info('Service temporarily turned off until everything is working together!');
 
 	// service.start()
 	// .then(function () {
-	// 	console.log('Twitter competition bot started!');
+	// 	logger.info('Twitter competition bot started!');
 	// });
 });
 
