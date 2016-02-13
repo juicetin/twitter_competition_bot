@@ -39,7 +39,7 @@ define(function(require, exports, module) {
 			stripped_tweet = stripped_tweet.substring(colon_index + 2, stripped_tweet.length);
 
 			// Strip links - generally the link to the tweet being RT'd
-			if (stripped_tweet.includes("http")) {
+			if (stripped_tweet.indexOf("http") !== -1) {
 				var stripped_tweet_parts = stripped_tweet.split('https://');
 				stripped_tweet = stripped_tweet_parts[0].trim();;
 
