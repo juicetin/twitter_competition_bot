@@ -32,8 +32,10 @@ define(function(require, exports, module) {
 			try {
 				var Twitter = twitter_client.get_client();
 				Twitter.post('/friendships/create/' + tweet.user.id);
-				// TODO create friendship (Follow) with user_id
-				// TODO write followed user to db with date created
+
+				// Add the followed user to the follower table
+				var insert_one_follower = require('app/repositories/following/insert_one.js');
+				return insert_one_follower({user_id : tweet.user_id});
 			} catch(error) {
 				// TODO should only be connection errors here
 			}

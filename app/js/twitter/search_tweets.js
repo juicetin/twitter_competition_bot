@@ -1,18 +1,12 @@
 define(function (require, exports, module) {
 
 	var winston = require('winston');
-
-	var Search = module.exports;
-	// var config = require('server/config.js');
-	// var Twitter = require('twitter');
-	// var twitter = new Twitter(config.tw_auth);
-
 	var Twitter;
 
 	/*
 	 *	Search
 	 */
-	var search_tweets_by_str = Search.search_tweets_by_str = function (search_string) {
+	 function search_tweets_by_str(search_string) {
 		Twitter = require('server/twitter.js').get_client();
 		try {
 
@@ -37,4 +31,6 @@ define(function (require, exports, module) {
 			return undefined;
 		}
 	}
+
+	 module.exports = search_tweets_by_str;
 });
