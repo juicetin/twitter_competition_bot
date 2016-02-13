@@ -7,9 +7,11 @@ define(function (require, exports, module) {
 	// Opens a connection to the database (should)
 	// 	only be called once for the session
 	db_module.connect = function() {
+		console.log('connecting with uri:', config.db.uri);
 		db = knex({
 			client: 'pg',
-			connection: config.db.uri
+			connection: config.db.uri,
+			ssl: true
 		});
 	}
 
