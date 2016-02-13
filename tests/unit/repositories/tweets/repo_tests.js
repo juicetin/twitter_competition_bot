@@ -66,6 +66,42 @@ describe("the repository for the 'tweets' table", function() {
 		});
 	});
 
-	it("should be able to find people I've previously followed given either id or screen name", function(done) {
+	it("should be able to find tweets I've previously retweeted given the id", function (done) {
+		var tweets = [
+		{
+			tweet_id: 124,
+			user_id: 715,
+			tweet_text: 'foo bar',
+			favourited: true
+		},
+		{
+			tweet_id: 897,
+			user_id: 704,
+			tweet_text: 'fizz buzz',
+			favourited: false
+		}
+		];
+
+		return knex('tweets').insert(tweets).then(function () {
+			return tweets_repo.find_one({tweet_id: 124});
+		}).then(function (result) {
+			result.should.have.length(1);
+			result[0].tweet_id.should.equal(124);
+			result[0].user_id.should.equal(715);
+			result[0].tweet_text.should.equal('foo bar');
+			result[0].favourited.should.equal(true);
+
+			return tweets_repo.find_one({tweet_id: 897});
+		}).then(function (result) {
+			result.should.have.length(1);
+			result[0].tweet_id.should.equal(897);
+			result[0].user_id.should.equal(704);
+			result[0].tweet_text.should.equal('fizz buzz');
+			result[0].favourited.should.equal(false);
+
+			done();
+		}).catch(function (error) {
+			done(error);
+		});
 	});
 });
