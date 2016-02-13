@@ -66,5 +66,6 @@ describe("the repository for the 'tweets' table", function() {
 		});
 	});
 
-	it("should be able to find people I've previously followed given either id or screen name");
+	it("should be able to find people I've previously followed given either id or screen name", function(done) {
+	});
 });

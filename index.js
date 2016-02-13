@@ -1,6 +1,11 @@
 "use strict"
 
-require('dotenv').config();
+try {
+	require('dotenv').config();
+} catch (error) {
+	console.log("No dotenv file located - using heroku configured environment variables");
+}
+
 
 var requirejs = require('requirejs');
 requirejs.config({
