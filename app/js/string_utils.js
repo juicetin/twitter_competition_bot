@@ -1,5 +1,11 @@
 define(function(require, exports, module) {
 	var Utils = exports;
+	if (typeof String.prototype.endsWith !== 'function') {
+		String.prototype.endsWith = function(suffix) {
+			return this.indexOf(suffix, this.length - suffix.length) !== -1;
+		};
+	}
+
 	/*
 	 *	Given a filter list and a string, check if any of the filter list
 	 *		words are in the string
