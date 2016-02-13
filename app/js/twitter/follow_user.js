@@ -1,7 +1,10 @@
 define(function (require, module, exports) {
+	var string_utils = require('app/js/string_utils');
+	var CONSTANTS = require('app/constants');
 	module.exports = function (tweet) {
 		var tweet_text_lower = tweet_text.lower();
-		if (false /* TODO any words in fav list, then enter! */) {
+		var exist_follow_words = string_utils.target_words_in_string(CONSTANTS.follow_keywords, tweet_text_lower);
+		if (exist_follow_words === true) {
 
 			// TODO Check whether follow limit (5000, it seems) is reached
 			// 	if so, unfollow 500 people TODO tune this - too many may raise flags

@@ -16,8 +16,8 @@ define(function (require, exports, module) {
 	CONSTANTS.unwanted_keywords = to_hash(CONSTANTS.unwanted_keywords_list);
 	CONSTANTS.fav_keywords_list = ["favorite", "like", "fave", "fav", "fvrt", "fvrite", "LK ", " LK"];
 	CONSTANTS.fav_keywords = to_hash(CONSTANTS.fav_keywords_list);
-	CONSTANTS.follow_strs_list = ["follow", "follows", "Follow", "follows", "foll", "flw", "follo", "F &", "F&", "& F", "&F"];
-	CONSTANTS.follow_strs = to_hash(CONSTANTS.follow_strs_list);
+	CONSTANTS.follow_keywords_list = ["follow", "follows", "Follow", "follows", "foll", "flw", "follo", "F &", "F&", "& F", "&F"];
+	CONSTANTS.follow_keywords = to_hash(CONSTANTS.follow_strs_list);
 
 	CONSTANTS.fav_rt_threshold = 2;
 

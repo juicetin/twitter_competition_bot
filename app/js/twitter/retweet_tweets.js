@@ -6,6 +6,7 @@ define(function (require, exports, module) {
 		var Twitter = twitter_client.get_client();
 		try {
 			Twitter.post('/statuses/retweet/' + tweet.id);
+			// TODO insert into db
 		} catch (error) {
 			// TODO deal with it. limit reached...?
 		}
