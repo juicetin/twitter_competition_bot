@@ -11,7 +11,8 @@ requirejs.config({
 
 requirejs(['app/index.js'], function (service) {
 
-	// Start service when everything is linked together properly!
+	console.log('Service temporarily turned off until everything is working together!');
+
 	// service.start()
 	// .then(function () {
 	// 	console.log('Twitter competition bot started!');
