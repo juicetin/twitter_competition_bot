@@ -14,9 +14,14 @@ define(function (require, module, exports) {
 
 				// Add the followed user to the follower table
 				var insert_one_follower = require('app/repositories/following/insert_one.js');
-				return insert_one_follower({user_id : tweet.user_id});
+				return insert_one_follower(
+					{
+						user_id : tweet.user_id,
+						user_screen_name: user_screen_name
+					}
+				);
 			} catch(error) {
-				// TODO should only be connection errors here
+				// TODO catch connection errors/follow limit errors here
 			}
 		}
 	}

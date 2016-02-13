@@ -65,6 +65,12 @@ describe("the repository for the 'following' table", function() {
 			result.should.have.length(1);
 			result[0].user_id.should.equal(54);
 			result[0].user_screen_name.should.equal('foobar');
+
+			return following_repo.find_one({user_screen_name: 'fizzbuzz'});
+		}).then(function (result) {
+			result.should.have.length(1);
+			result[0].user_id.should.equal(72);
+			result[0].user_screen_name.should.equal('fizzbuzz');
 			done();
 		}).catch(function (error) {
 			done(error);

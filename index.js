@@ -1,11 +1,5 @@
 "use strict"
-var logger = require('server/logger.js');
 
-try {
-	require('dotenv').config();
-} catch (error) {
-	logger.error("No dotenv file located - using heroku configured environment variables");
-}
 
 
 var requirejs = require('requirejs');
@@ -15,7 +9,12 @@ requirejs.config({
 	paths: {}
 });
 
-requirejs(['app/index.js'], function (service) {
+requirejs(['app/index.js', 'server/logger.js'], function (service, logger) {
+	try {
+		require('dotenv').config();
+	} catch (error) {
+		logger.error("No dotenv file located - using heroku configured environment variables");
+	}
 
 	logger.info('Service temporarily turned off until everything is working together!');
 
