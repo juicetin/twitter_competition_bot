@@ -4,7 +4,7 @@ define(function (require, exports, module) {
 	var db = require('server/db.js');
 	var twitter_client = require('server/twitter.js');
 
-	var Stream = require('app/js/stream.js');
+	var Stream = require('app/js/twitter/stream_single_tweet.js');
 
 	var Twitter;
 

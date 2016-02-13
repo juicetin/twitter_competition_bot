@@ -6,10 +6,10 @@ define(function(require, exports, module) {
 	var twitter_client = require('server/twitter');
 	var string_utils = require('app/js/string_utils');
 
-	var Search = require('app/js/twitter/search_tweets');
-	var retweet_tweets = require('app/js/twitter/retweet_tweets');
-	var follow_user = require('app/js/twitter/follow_user');
-	var favourite_tweet = require('app/js/twitter/favourite_tweet');
+	var search_tweets_by_str = require('app/js/twitter/search_tweets');
+	var retweet_tweets = require('app/js/twitter/retweet_tweets');	// Returns promise
+	var follow_user = require('app/js/twitter/follow_user'); // Returns Promise
+	var favourite_tweet = require('app/js/twitter/favourite_tweet'); // Returns promise
 	var tweet_is_original = require('app/js/tweet_is_original');
 
 	var streamSingleTweet = Stream.streamSingleTweet = function (tweet) {
@@ -33,7 +33,7 @@ define(function(require, exports, module) {
 			var new_tweet_text = string_utils.strip_copied_tweets(tweet_text);
 
 			// Search tweets based on 'fixed' tweet string, but skip tweet if search fails
-			var searched_tweets = Search.search_tweets_by_str(new_tweet_text);
+			var searched_tweets = search_tweets_by_str(new_tweet_text);
 			if (typeof searched_tweets === 'undefined') { return };
 
 			// Check all results of tweet search for potential retweets

@@ -1,6 +1,8 @@
 define(function (require, module, exports) {
 	var string_utils = require('app/js/string_utils');
 	var CONSTANTS = require('app/constants');
+	var Promise = require('bluebird');
+
 	module.exports = function (tweet) {
 		var tweet_text_lower = tweet_text.lower();
 		var exist_follow_words = string_utils.target_words_in_string(CONSTANTS.follow_keywords, tweet_text_lower);
@@ -25,6 +27,8 @@ define(function (require, module, exports) {
 				);
 			} catch(error) {
 				// TODO catch connection errors/follow limit errors here
+
+				return Promise.reject();
 			}
 		}
 	}
