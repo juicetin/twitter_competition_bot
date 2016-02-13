@@ -26,7 +26,7 @@ define(function(require, exports, module) {
 		// Deal with those tweets that are nested RT: RT: RT:....
 		// TODO a bunch of pre-strip tweets - do an analysis to figure out
 		// best way to filter/process them
-		while (tweet_text.startsWith('RT')) {
+		while (tweet_text.indexOf('RT') == 0) {
 
 			var colon_index = stripped_tweet.indexOf(':');
 
