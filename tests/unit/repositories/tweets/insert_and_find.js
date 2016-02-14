@@ -1,6 +1,6 @@
 var requirejs = require('requirejs');
 
-describe("the repository for the 'tweets' table", function() {
+describe("inserting and finding 'tweets'", function() {
 
 	require('should');
 	var tweets_repo,
