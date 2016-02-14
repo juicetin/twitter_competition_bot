@@ -1,4 +1,5 @@
 define(function(require, exports, module) {
+	var logger = require('server/logger.js');
 	var Utils = exports;
 	if (typeof String.prototype.endsWith !== 'function') {
 		String.prototype.endsWith = function(suffix) {

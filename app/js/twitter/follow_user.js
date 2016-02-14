@@ -1,6 +1,6 @@
 define(function (require, module, exports) {
-	var string_utils = require('app/js/string_utils');
-	var CONSTANTS = require('app/constants');
+	var string_utils = require('app/js/string_utils.js');
+	var CONSTANTS = require('app/constants.js');
 	var Promise = require('bluebird');
 
 	module.exports = function (tweet) {

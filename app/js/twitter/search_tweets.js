@@ -1,6 +1,6 @@
 define(function (require, exports, module) {
 
-	var winston = require('winston');
+	var logger = require('server/logger.js');
 	var Twitter;
 
 	/*
@@ -17,15 +17,28 @@ define(function (require, exports, module) {
 				retweeted: false
 			};
 
+			logger.info('Searching with params: ', searchParams, {});
 			Twitter.get('search/tweets', searchParams, function (error, tweets, response) {
 				if (error) {
-					winston.error(error);
+					logger.error('Twitter tweet search problem');
+					logger.error('%j', error, {});
+
+					// Search limit exceeded
+					if (error[0].code == 88) {
+						// process.exit();
+					}
 				}
-				return tweets.statuses;
+
+				if (tweets.statuses) {
+					logger.info('Found ', tweets.statuses.length, ' tweets', {});
+					return tweets.statuses;
+				}
+				return undefined;
 			});
 
 		} catch (error) {
-			winston.error(error);
+			logger.error('Twitter tweet search problem');
+			logger.error(error);
 			// TODO keep track of time here
 			// 		once 3 minutes has elapsed, try searching again
 			return undefined;

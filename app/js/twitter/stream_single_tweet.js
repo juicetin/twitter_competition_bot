@@ -1,23 +1,24 @@
 define(function(require, exports, module) {
 
 	var Stream = module.exports;
-	var CONSTANTS = require('app/constants');
-	var logger = require('server/logger');
-	var twitter_client = require('server/twitter');
-	var string_utils = require('app/js/string_utils');
+	var CONSTANTS = require('app/constants.js');
+	var logger = require('server/logger.js');
+	var twitter_client = require('server/twitter.js');
+	var string_utils = require('app/js/string_utils.js');
 
-	var search_tweets_by_str = require('app/js/twitter/search_tweets');
-	var retweet_tweets = require('app/js/twitter/retweet_tweets');	// Returns promise
-	var follow_user = require('app/js/twitter/follow_user'); // Returns Promise
-	var favourite_tweet = require('app/js/twitter/favourite_tweet'); // Returns promise
-	var tweet_is_original = require('app/js/tweet_is_original');
+	var search_tweets_by_str = require('app/js/twitter/search_tweets.js');
+	var retweet_tweets = require('app/js/twitter/retweet_tweets.js');	// Returns promise
+	var follow_user = require('app/js/twitter/follow_user.js'); // Returns Promise
+	var favourite_tweet = require('app/js/twitter/favourite_tweet.js'); // Returns promise
+	var check_search_limit = require('app/js/twitter/check_search_limit.js');
+	var tweet_is_original = require('app/js/twitter/tweet_is_original.js');
 
 	var streamSingleTweet = Stream.streamSingleTweet = function (tweet) {
+
 		var id_str = tweet.id_str;
 		if (typeof id_str === "undefined") { return; }
 
 		var tweet_text = tweet.text;
-		logger.info(tweet_text);
 
 		// Check if any unwanted words are in the tweet, and skip tweet if so
 		var exist_unwanted_words = string_utils.target_words_in_string(CONSTANTS.unwanted_keywords, tweet_text);
@@ -26,8 +27,14 @@ define(function(require, exports, module) {
 		// future TODO do document matrix comparison from ~300 most recent tweets, don't waste
 		// the following search on a tweet that's 80%+ similar to an existing retweet
 
+
 		// Filter out copied tweets - random guess here
-		if (tweet_is_original(tweet) === true) {
+		if (tweet_is_original(tweet) !== true) {
+
+			// Won't be able to search anyway
+			var remaining_tweet_searches = check_search_limit();
+			console.log(remaining_tweet_searches);
+			if (remaining_tweet_searches === 0) { return };
 
 			// Strip 'copied' down tweet to a bare minimum (extremely rough here), chance for regex :muscle:
 			var new_tweet_text = string_utils.strip_copied_tweets(tweet_text);

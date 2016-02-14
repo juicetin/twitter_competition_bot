@@ -1,10 +1,10 @@
 define(function (require, exports, module) {
-	var logger = require('server/logger');
-	var twitter_client = require('server/twitter');
+	var logger = require('server/logger.js');
+	var twitter_client = require('server/twitter.js');
 
 	function retweet(tweet) {
 		var Twitter = twitter_client.get_client();
-		var insert_tweet = require('app/repositories/tweets/insert_one');
+		var insert_tweet = require('app/repositories/tweets/insert_one.js');
 		try {
 			Twitter.post('/statuses/retweet/' + tweet.id);
 			return insert_tweet({

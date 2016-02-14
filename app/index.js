@@ -1,5 +1,5 @@
 define(function (require, exports, module) {
-	var winston = require('winston');
+	var logger = require('server/logger.js')
 	var Promise = require('bluebird');
 	var db = require('server/db.js');
 	var twitter_client = require('server/twitter.js');
@@ -20,12 +20,12 @@ define(function (require, exports, module) {
 		 *	Twitter stream
 		 */
 		Twitter.stream('statuses/filter', {track: 'RT win'}, function(stream) {
-
 			/*
 			 *	Error functionality
 			 */
 			stream.on('error', function (error) {
-				winston.error(error);
+				logger.error('Twitter stream error');
+				logger.error(error);
 			});
 
 			/*
