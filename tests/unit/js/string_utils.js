@@ -21,8 +21,15 @@ describe("String utilities should do their job!", function() {
 	it("should strip copied tweets down at a basic level", function() {
 		var tweet = "RT @davelackie: Let's keep the #lovestoryEDT fun going! Win Chloe Love Story EDT! To enter, follow @davelackie &amp; RT https://t.co/DJsPYLS71Z";
 		var stripped_tweet = string_utils.strip_copied_tweets(tweet);
-		
 		stripped_tweet.should.startWith("Let's keep");
+
+		tweet = "#WIN a family ticket to @PeppaPigLive plus a meet &amp; greet with Peppa &amp; friends on Sat 27Feb 4pm RT &amp; follow to ent";
+		stripped_tweet = string_utils.strip_copied_tweets(tweet);
+		stripped_tweet.should.startWith("#WIN a family ticket");
+
+		tweet = '  BONUS Chloe #lovestoryEDT giveaway! Win this luxe bath gel &amp; candle! To enter, follow @davelackie &amp;';
+		stripped_tweet = string_utils.strip_copied_tweets(tweet);
+		stripped_tweet.should.startWith('BONUS Chloe #lovestoryEDT');
 	});
 
 	it("should successfully identify that one or more from a list of words exists in a string", function() {

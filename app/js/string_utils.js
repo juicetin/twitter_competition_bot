@@ -24,16 +24,16 @@ define(function(require, exports, module) {
 	 *	Strip a copied tweet down to what is (estimate) as close to the 'original'
 	 *	tweet as possible
 	 */
-	var strip_copied_tweets = Utils.strip_copied_tweets = function(tweet_text) {
+	Utils.strip_copied_tweets = function(tweet_text) {
 
 		// Create new object that isn't a reference - don't modify original
 		// TODO not sure if this is the best way to copy and not get a reference?
-		var stripped_tweet = new String(tweet_text);
+		var stripped_tweet = tweet_text.trim();
 
 		// Deal with those tweets that are nested RT: RT: RT:....
 		// TODO a bunch of pre-strip tweets - do an analysis to figure out
 		// best way to filter/process them
-		while (tweet_text.indexOf('RT') == 0) {
+		while (stripped_tweet.indexOf('RT') === 0) {
 
 			var colon_index = stripped_tweet.indexOf(':');
 
@@ -55,8 +55,7 @@ define(function(require, exports, module) {
 					stripped_tweet = stripped_tweet.substring(0, stripped_tweet.length-3);
 				}
 			}
-
-			return stripped_tweet;
 		}
+		return stripped_tweet;
 	}
 });
