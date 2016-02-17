@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "coverage": "NODE_ENV=TEST istanbul cover --hook-run-in-context _mocha -- --recursive tests",
     "test": "NODE_ENV=TEST node_modules/mocha/bin/mocha --recursive tests",
     "test-u": "NODE_ENV=TEST node_modules/mocha/bin/mocha --recursive tests/unit",
     "test-i": "NODE_ENV=TEST node_modules/mocha/bin/mocha --recursive tests/integration",
@@ -17,17 +18,20 @@
     "bluebird": "^3.2.2",
     "chai": "^3.5.0",
     "dotenv": "^2.0.0",
+    "istanbul": "^0.4.2",
     "knex": "^0.9.0",
     "mocha": "^2.4.5",
     "moment": "^2.11.2",
     "node-tweet-stream": "^1.10.0",
     "node-twitter": "^0.5.3",
     "pg": "^4.4.4",
+    "q": "^1.4.1",
     "requirejs": "^2.1.22",
     "twitter": "^1.2.5",
     "winston": "^2.1.1"
   },
   "devDependencies": {
+    "istanbul-harmony": "^0.3.16",
     "should": "^8.2.2"
   }
 }

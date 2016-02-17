@@ -1,3 +1,4 @@
+/* istanbul ignore define */
 "use strict"
 
 var requirejs = require('requirejs');
