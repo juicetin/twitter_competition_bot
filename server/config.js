@@ -22,6 +22,6 @@ define(function(require, exports, module) {
 		uri: process.env.DATABASE_URL || 'postgres://postgres@localhost/twitter_bot'
 	};
 	if (is_test_env === true) {
-		config.db.uri = process.env.DATABASE_URL || 'postgres://postgres@localhost/twitter_bot_test'
+		config.db.uri = process.env.TEST_DATABASE_URL || 'postgres://postgres@localhost/twitter_bot_test'
 	}
 });
