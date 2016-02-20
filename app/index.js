@@ -25,7 +25,7 @@ define(function (require, exports, module) {
 			 */
 			stream.on('error', function (error) {
 				logger.error('Twitter stream error');
-				logger.error(error);
+				// logger.error(error);
 			});
 
 			/*

@@ -6,6 +6,7 @@ define(function (require, exports, module) {
 	var config = require('server/config.js');
 	twitter_manager.connect = function() {
 		logger.info('Connecting/authing with Twitter...');
+		logger.info('Using auth details: ', config.tw_auth, {});
 		Twitter = new twitter_lib(config.tw_auth);
 		logger.info('Successfully connected to twitter!');
 	}
