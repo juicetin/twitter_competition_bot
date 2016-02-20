@@ -20,6 +20,15 @@ module.exports = {
 
   heroku_test: {
     client: 'postgresql',
+    connection: 'postgres://scqygvouxbqauu:UiY4xLbT5yoG5DkVJVvDmvvzWn@ec2-107-20-148-211.compute-1.amazonaws.com:5432/dfej6b7lbiclln',
+    migrations: {
+      tableName: 'knex_migrations'
+    },
+	ssl: true
+  },
+
+  heroku: {
+    client: 'postgresql',
     connection: 'postgres://muorgdpkcznrjr:K6HQFMGamF9IrZZ1US-sCJFw6j@ec2-107-20-136-89.compute-1.amazonaws.com:5432/d8i70c6n902tqj',
     migrations: {
       tableName: 'knex_migrations'
