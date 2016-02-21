@@ -22,6 +22,7 @@ describe("the interface to twitter API's retweet functionality", function() {
 	});
 
 	afterEach(function(done) {
+    this.timeout(10000);
 		db.clear().then(function() {
 
 			var Twitter = twitter_client.get_client();
