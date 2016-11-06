@@ -1,0 +1,1 @@
+Currently in-development twitter-competition-bot, JS version. No longer planning to work on this version, expect to see the repo disappear sometime in the near future - reverting to work on the Python version.
